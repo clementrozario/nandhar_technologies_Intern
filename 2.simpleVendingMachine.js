@@ -19,7 +19,7 @@ function vend(itemName,moneyPaid){
                 if(moneyPaid>=item.price){
                     item.stock--;
                     const change = moneyPaid - item.price;
-                    console.log(`Vended item is: ${item.name}.Your change is:${change}`)
+                    console.log(`Vended item is:${item.name}.Your change is:${change}`)
                 }
                 else{
                     console.log("not enough money");
@@ -29,8 +29,8 @@ function vend(itemName,moneyPaid){
             }
             return;
         }
-        console.log("Item not found");
     }
+    console.log("Item not found");
 }
 
 vend("chips",55)
