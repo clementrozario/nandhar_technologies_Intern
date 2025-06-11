@@ -1,44 +1,67 @@
-class Person{
-    #age;
-    country = "India"
-    constructor(name,age){
-        this.name = name;
-        this.#age = age;
+class Player{
+   health = 100;
+   static playerCount = 0;
+    constructor(name){
+        this.name= name;
+        Player.playerCount++;   
+    }    
+    introduce(){
+        console.log(`Hi my name is ${this.name} and i have ${this.health} health`)
     }
-    greet(){
-        console.log(`hello,${this.name} and your age is ${this.#age} from ${this.country}`);
+    static getRules(){
+        console.log("the main rule is to have fun");
     }
-    getAge(){
-        return this.#age;
+}     
+//=====================================================================================//
+class Warrior extends Player{
+    constructor(name,weapon){
+        super(name)
+        this.weapon=weapon;
     }
-    static isAdult(age){
-        return age >= 18;
+}
+//=====================================================================================//
+
+class Mage extends Player{
+    #mana;
+    constructor(name){
+        super(name);
+        this.#mana = 50;
+    }
+    castSpell(){
+        if(this.#mana>10){
+            this.#mana -= 10;
+            console.log("Casting a powerful spell!");
+            }else{
+                console.log("Not enough mana!");
+            }
+        }
+    
+    getMana(){
+        return this.#mana;
     }
 }
 
-class Student extends Person{
-    constructor(name,age,grade){
-        super(name,age);
-        this.grade = grade;
-    }
-    study(){
-        console.log(`hello ${this.name} your grade is:${this.grade} and you are from ${this.country}`);
-    }
-}
 
-const student = new Student("clement",27,8.34);
+const cla = new Player("clement");
+cla.introduce();
+const clem = new Player("francis");
+clem.introduce();
 
-console.log(student.country);
+const warrior = new Warrior("tom","gun");
+warrior.introduce();
+console.log(warrior.weapon);
 
-student.country= "france";
-// console.log(student.country) we cannot call static methods on instance
-student.greet();
-student.study();
+const mages = new Mage("tony");
+mages.castSpell();
+mages.castSpell();
+mages.castSpell();
+console.log(mages.getMana());
+//mages.#mana;//SyntaxError: Private field '#mana' must be declared in an enclosing class
 
-console.log(Person.isAdult(20));
-console.log(Person.isAdult(15));
+const newPlayer1 = new Player("karthi");
+const newPlayer2 = new Player("jai");
+const newPlayer3 = new Warrior("joel");
+const newPlayer4 = new Warrior("joseph");
 
-
-console.log(student.getAge());
-// console.log(student.#age); cannot access directly the instance
-
+Player.getRules();
+console.log(Player.playerCount)
