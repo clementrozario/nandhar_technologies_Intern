@@ -100,7 +100,7 @@
 //  b) Refers to the current instance of the class
 //  c) Refers to the parent class
 //  d) Refers to the class itself
-// 
+
 // option b referes to the current instances of the class
 
 // 10. What is the correct way to add a method in a class?
@@ -111,7 +111,7 @@
 //   }
 // }
 
-//option  b)
+// option  b)
 // class Car {
 //   function drive() {
 //     console.log("Driving");
