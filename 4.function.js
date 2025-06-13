@@ -45,6 +45,7 @@ const maryIntroduce = john.introduce.bind(mary);
 maryIntroduce();// bind provides a separte copy for mary
 john.introduce();
 //--------------------------------------------------------------------------------
+// closure
 function count(){
     let count = 0;
     return function(){
@@ -52,7 +53,7 @@ function count(){
         return count;
     }
 }
-const counter = count();
+const counting = count();
 counter(); //1
 
 // recursive function
@@ -62,3 +63,16 @@ function factorial(n){
 }
 
 console.log(factorial(5));
+//-------------------------------------------------------------------------------------
+
+const counter = {
+  count: 0,
+  
+  increment: function() {
+    setInterval(() => {
+      this.count++;
+      console.log(this.count);
+    }, 1000);
+  }
+};
+    
